@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('community_members', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('community_id')->constrained('communities')->cascadeOnDelete();
-            $table->foreignId('member_id')->constrained('members')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->boolean('is_active')->default(true);
             $table->date('join_date')->nullable();
 
@@ -29,8 +29,8 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->unique(['community_id', 'member_id']);
-            $table->index(['member_id', 'community_id']);
+            $table->unique(['community_id', 'user_id']);
+            $table->index(['user_id', 'community_id']);
         });
     }
 
