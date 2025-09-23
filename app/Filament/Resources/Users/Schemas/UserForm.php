@@ -4,8 +4,10 @@ namespace App\Filament\Resources\Users\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Laravel\Pail\File;
 
 class UserForm
 {
@@ -23,10 +25,13 @@ class UserForm
                 TextInput::make('password')
                     ->password()
                     ->required(),
-                TextInput::make('phone')
-                    ->tel(),
-                DatePicker::make('join_date'),
-                TextInput::make('photos'),
+                TextInput::make('phone'),
+                DatePicker::make('join_date')->label('Join date'),
+                FileUpload::make('photos')
+                    ->directory('user-photos')
+                    ->label('Photo')
+                    ->maxSize(1024)
+                    ->image(),
             ]);
     }
 }
