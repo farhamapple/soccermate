@@ -38,7 +38,11 @@ class CommunityMemberForm
                     ->required()
                     ->numeric()
                     ->default(0),
-                TextInput::make('points')
+                TextInput::make('team_goal')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                TextInput::make('team_conceded')
                     ->required()
                     ->numeric()
                     ->default(0),

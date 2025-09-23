@@ -19,6 +19,8 @@ return new class extends Migration
             $table->date('join_date')->nullable();
 
             // Statistik (sesuai ERD kamu – catatan: ini bisa dipindah ke level event bila mau)
+            $table->integer('number_event')->default(0);
+            $table->integer('number_match')->default(0);
             $table->integer('win')->default(0);
             $table->integer('draw')->default(0);
             $table->integer('lose')->default(0);

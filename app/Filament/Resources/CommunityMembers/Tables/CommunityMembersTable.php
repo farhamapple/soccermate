@@ -20,12 +20,11 @@ class CommunityMembersTable
                     ->label('User ID')
                     ->numeric()
                     ->sortable(),
-                IconColumn::make('is_active')
-                    ->label('Active')
-                    ->boolean(),
-                TextColumn::make('join_date')
-                    ->label('Join Date')
-                    ->date()
+                TextColumn::make('number_event')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('number_match')
+                    ->numeric()
                     ->sortable(),
                 TextColumn::make('win')
                     ->numeric()
@@ -39,12 +38,23 @@ class CommunityMembersTable
                 TextColumn::make('goal')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('points')
+                TextColumn::make('team_goal')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('team_conceded')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('champions')
                     ->numeric()
                     ->sortable(),
+                IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('join_date')
+                    ->label('Join Date')
+                    ->date()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
