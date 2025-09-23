@@ -15,12 +15,17 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class EventWaitinglistResource extends Resource
 {
+    protected static ?int $navigationSort = 5;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Transactions';
+
     protected static ?string $model = EventWaitinglist::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::QueueList;
 
     protected static ?string $recordTitleAttribute = 'WaitingList';
 

@@ -22,10 +22,8 @@ return new class extends Migration
             $table->integer('goals')->default(0);
             $table->integer('conceded')->default(0);
             $table->integer('points')->default(0);
-
+            $table->integer('team_count')->nullable();           // kapasitas tim (snapshot)
             $table->boolean('champion')->default(false);
-            $table->boolean('is_wl_team')->default(false);
-            $table->string('status')->nullable(); // waiting, cancel, confirm (jika dipakai)
 
             $table->timestamps();
 

@@ -22,8 +22,8 @@ return new class extends Migration
 
             $table->string('name');
             $table->dateTime('start_date_event')->nullable();
-            $table->dateTime('start_date_registration')->nullable();
-            $table->dateTime('end_date_registration')->nullable();
+            $table->timestamp('start_date_registration')->nullable();
+            $table->timestamp('end_date_registration')->nullable();
 
             // minisoccer / football
             $table->string('type');

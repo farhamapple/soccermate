@@ -15,14 +15,23 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class CommunityMemberResource extends Resource
 {
     protected static ?string $model = CommunityMember::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Users;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Master';
+
+    protected static ?string $navigationLabel = 'Members';
 
     protected static ?string $recordTitleAttribute = 'Members';
+
+    protected static ?string $breadcrumb = 'Members'; // breadcrumb di atas
+
 
     public static function form(Schema $schema): Schema
     {
@@ -54,5 +63,15 @@ class CommunityMemberResource extends Resource
             'view' => ViewCommunityMember::route('/{record}'),
             'edit' => EditCommunityMember::route('/{record}/edit'),
         ];
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'List Members'; // untuk List
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Members'; // untuk singular (Create/Edit/View)
     }
 }

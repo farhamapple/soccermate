@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('name')->nullable(); // snapshot nama ketika event (kalau diperlukan)
             $table->integer('goals_scored')->default(0);
             $table->integer('cards')->default(0);                // total kartu (kuning/merah)
-            $table->integer('matches_without_goal')->default(0); // sesuai ERD terakhir
+            //$table->integer('matches_without_goal')->default(0); // sesuai ERD terakhir
             $table->boolean('is_present')->default(true);
-            $table->integer('team_count')->nullable();           // kapasitas tim (snapshot)
+            $table->boolean('is_wl_team')->default(false);
+            //$table->string('status')->nullable(); // waiting, cancel, confirm (jika dipakai)
             $table->string('position')->nullable();              // GK/DF/MF/FW
 
             $table->timestamps();

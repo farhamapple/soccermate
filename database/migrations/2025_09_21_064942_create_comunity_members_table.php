@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('draw')->default(0);
             $table->integer('lose')->default(0);
             $table->integer('goal')->default(0);
-            $table->integer('points')->default(0);
+            $table->integer('team_goal')->default(0);
+            $table->integer('team_conceded')->default(0);
             $table->integer('champions')->default(0);
             $table->json('position')->nullable();
 

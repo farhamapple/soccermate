@@ -15,12 +15,17 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class EventMatchResource extends Resource
 {
+    protected static ?int $navigationSort = 3;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Transactions';
+
     protected static ?string $model = EventMatch::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::NumberedList;
 
     protected static ?string $recordTitleAttribute = 'Match';
 

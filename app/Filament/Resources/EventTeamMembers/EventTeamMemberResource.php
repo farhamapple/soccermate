@@ -15,12 +15,17 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class EventTeamMemberResource extends Resource
 {
+    protected static ?int $navigationSort = 4;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Transactions';
+
     protected static ?string $model = EventTeamMember::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentList;
 
     protected static ?string $recordTitleAttribute = 'Event Team Members';
 

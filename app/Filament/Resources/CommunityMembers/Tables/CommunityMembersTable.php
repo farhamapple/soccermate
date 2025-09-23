@@ -16,15 +16,15 @@ class CommunityMembersTable
     {
         return $table
             ->columns([
-                TextColumn::make('community_id')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('user_id')
+                    ->label('User ID')
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('is_active')
+                    ->label('Active')
                     ->boolean(),
                 TextColumn::make('join_date')
+                    ->label('Join Date')
                     ->date()
                     ->sortable(),
                 TextColumn::make('win')
