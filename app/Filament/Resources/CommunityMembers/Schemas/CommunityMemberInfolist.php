@@ -12,15 +12,12 @@ class CommunityMemberInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('community_id')
+                TextEntry::make('community.name')
+                    ->label('Community Name')
                     ->numeric(),
-                TextEntry::make('user_id')
+                TextEntry::make('user.name')
+                    ->label('Member Name')
                     ->numeric(),
-                IconEntry::make('is_active')
-                    ->boolean(),
-                TextEntry::make('join_date')
-                    ->date()
-                    ->placeholder('-'),
                 TextEntry::make('win')
                     ->numeric(),
                 TextEntry::make('draw')
@@ -33,12 +30,18 @@ class CommunityMemberInfolist
                     ->numeric(),
                 TextEntry::make('champions')
                     ->numeric(),
+                IconEntry::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
+                TextEntry::make('join_date')
+                    ->date()
+                    ->placeholder('-'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
                     ->dateTime()
                     ->placeholder('-'),
-            ]);
+            ])->columns(2);
     }
 }

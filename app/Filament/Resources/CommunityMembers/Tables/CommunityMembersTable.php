@@ -2,28 +2,44 @@
 
 namespace App\Filament\Resources\CommunityMembers\Tables;
 
+use App\Filament\Resources\CommunityMembers\Schemas\CommunityMemberInfolist;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Schemas\Schema;
+use Filament\Support\Enums\Width;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class CommunityMembersTable
 {
+    // Method untuk infolist, panggil dari Schema class
+    public static function infolist(Schema $schema): Schema
+    {
+        return CommunityMemberInfolist::configure($schema);
+    }
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->label('User ID')
+                ImageColumn::make('user.photos')
+                    ->label('Photo') // 'avatar' should be the column in your database storing the image path
+                    ->imageHeight(40) // Optional: Adjust the height of the image
+                    ->circular(), // Makes the image fully rounded,
+                TextColumn::make('user.name')
                     ->numeric()
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('number_event')
+                    ->label('Events')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('number_match')
+                    ->label('Matches')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('win')
@@ -68,6 +84,17 @@ class CommunityMembersTable
                 //
             ])
             ->recordActions([
+                // Action::make('view')
+                //     ->label('Cepat')
+                //     ->icon('heroicon-o-eye')
+                //     ->modalHeading('Detail User')
+                //     ->modalWidth(Width::FiveExtraLarge)
+                //     ->infolist(function (Schema $schema, $record) { // $record otomatis dari baris table
+                //         return static::infolist($schema)->record($record); // Set record untuk isi data
+                //     })
+                //     ->action(fn() => null) // Tidak perlu logic, hanya buka modal
+                //     ->modalSubmitAction(false) // Hilangkan tombol submit (read-only)
+                //     ->modalCancelActionLabel('Tutup'),
                 ViewAction::make(),
                 EditAction::make(),
             ])

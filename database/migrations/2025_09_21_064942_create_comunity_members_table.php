@@ -28,7 +28,8 @@ return new class extends Migration
             $table->integer('team_goal')->default(0);
             $table->integer('team_conceded')->default(0);
             $table->integer('champions')->default(0);
-            $table->json('position')->nullable();
+            $table->string('position')->nullable();
+            $table->string('jersey')->nullable();
 
             $table->timestamps();
 
