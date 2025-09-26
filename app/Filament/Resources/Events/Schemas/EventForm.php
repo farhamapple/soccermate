@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -20,7 +21,8 @@ class EventForm
                     ->numeric(),
                 TextInput::make('name')
                     ->required(),
-                DateTimePicker::make('start_date_event'),
+                DatePicker::make('date_event')
+                    ->required(),
                 DateTimePicker::make('start_date_registration'),
                 DateTimePicker::make('end_date_registration'),
                 TextInput::make('type')

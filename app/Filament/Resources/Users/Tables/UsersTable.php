@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use App\Filament\Resources\Users\Schemas\UserInfolist;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -9,9 +11,17 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Support\Enums\Width;
 
 class UsersTable
 {
+    // Method untuk infolist, panggil dari Schema class
+    public static function infolist(Schema $schema): Schema
+    {
+        return UserInfolist::configure($schema);
+    }
+
     public static function configure(Table $table): Table
     {
         return $table
@@ -51,7 +61,18 @@ class UsersTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
+                // ViewAction::make(),
+                Action::make('view')
+                    ->label('Lihat')
+                    ->icon('heroicon-o-eye')
+                    ->modalHeading('Detail User')
+                    ->modalWidth(Width::FiveExtraLarge)
+                    ->infolist(function (Schema $schema, $record) { // $record otomatis dari baris table
+                        return static::infolist($schema)->record($record); // Set record untuk isi data
+                    })
+                    ->action(fn() => null) // Tidak perlu logic, hanya buka modal
+                    ->modalSubmitAction(false) // Hilangkan tombol submit (read-only)
+                    ->modalCancelActionLabel('Tutup'),
                 EditAction::make(),
             ])
             ->toolbarActions([

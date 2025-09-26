@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('community_id')->constrained('communities')->cascadeOnDelete();
 
             $table->string('name');
-            $table->dateTime('start_date_event')->nullable();
+            $table->date('date_event')->nullable();
             $table->timestamp('start_date_registration')->nullable();
             $table->timestamp('end_date_registration')->nullable();
 

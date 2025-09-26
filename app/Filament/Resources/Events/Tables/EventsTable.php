@@ -16,36 +16,43 @@ class EventsTable
     {
         return $table
             ->columns([
-                TextColumn::make('community_member_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('community_id')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('community_member_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('community_id')
+                //     ->numeric()
+                //     ->sortable(),
                 TextColumn::make('name')
+                    ->label('Name')
                     ->searchable(),
-                TextColumn::make('start_date_event')
+                TextColumn::make('date_event')
+                    ->label('Date')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('start_date_registration')
+                    ->label('Registration Start')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('end_date_registration')
+                    ->label('Registration End')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('type')
+                    ->label('Type')
                     ->searchable(),
                 IconColumn::make('is_active')
+                    ->label('Active')
                     ->boolean(),
                 TextColumn::make('team_count')
+                    ->label('Teams')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('htm')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('match_count')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('htm')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('match_count')
+                //     ->numeric()
+                //     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
