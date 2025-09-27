@@ -15,13 +15,14 @@ class EventMatchesTable
     {
         return $table
             ->columns([
-                TextColumn::make('event_id')
-                    ->numeric()
+                TextColumn::make('event.name')
+                    ->label('Event')
                     ->sortable(),
-                TextColumn::make('home_team_id')
-                    ->numeric()
+                TextColumn::make('homeTeam.name')
+                    ->label('Home Team')
                     ->sortable(),
-                TextColumn::make('away_team_id')
+                TextColumn::make('awayTeam.name')
+                    ->label('Away Team')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('home_score')

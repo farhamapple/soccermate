@@ -53,11 +53,17 @@ class EventTeamResource extends Resource
         ];
     }
 
+
+    public static function canCreate(): bool
+    {
+        return false; // Tombol Create akan hilang
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => ListEventTeams::route('/'),
-            'create' => CreateEventTeam::route('/create'),
+            //'create' => CreateEventTeam::route('/create'),
             'view' => ViewEventTeam::route('/{record}'),
             'edit' => EditEventTeam::route('/{record}/edit'),
         ];

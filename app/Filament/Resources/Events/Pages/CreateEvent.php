@@ -23,7 +23,7 @@ class CreateEvent extends CreateRecord
         for ($i = 1; $i <= $teamCount; $i++) {
             EventTeam::create([
                 'event_id' => $this->record->id,
-                'name' => 'Event ID ' . $this->record->id . ' - Team ' . $i,
+                'name' => 'Team ' . $i,
                 'team_classement' => 0,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -32,7 +32,7 @@ class CreateEvent extends CreateRecord
 
         // Buat Event Match sesuai dengan match_count
         // Logikanya adalah untuk membuat jadwal pertandigan round-robin, perhatikan juga, antara Team maksimal match 2 kali berturut-turut dalam bermain, yang penting semua team dapat bertemu 1 kali.
-        // Misal team_count = 4, maka akan ada 6 pertandingan, pertandingan 1 vs 2, 3 vs 4, 1 vs 3, 2 vs 4, 1 vs 4, 2 vs 3
+        // Misal team_count = 4, maka akan ada 6 pertandingan, pertandingan 1 vs 2, 3 vs 4, 1 vs 3, 2 vs 4, 1 vs 4, 2 vs 3. dibuat juga secara random tidak harus mengikuti seperti ini
         // home_team_id dan away_team_id diambil dari EventTeam yang sudah dibuat sebelumnya
         // Untuk penentuan jadwal pertandingan, bisa menggunakan algoritma round-robin tournament scheduling
         // Referensi: https://en.wikipedia.org/wiki/Round-robin_tournament#Scheduling

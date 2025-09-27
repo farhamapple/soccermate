@@ -16,8 +16,7 @@ class EventTeamsTable
     {
         return $table
             ->columns([
-                TextColumn::make('event_id')
-                    ->numeric()
+                TextColumn::make('event.name')
                     ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
@@ -41,10 +40,6 @@ class EventTeamsTable
                     ->sortable(),
                 IconColumn::make('champion')
                     ->boolean(),
-                IconColumn::make('is_wl_team')
-                    ->boolean(),
-                TextColumn::make('status')
-                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
