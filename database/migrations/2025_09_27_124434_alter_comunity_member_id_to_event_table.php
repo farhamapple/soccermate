@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('events', function (Blueprint $table) {
+            //Remove community_member_id column
+            $table->dropForeign(['community_member_id']);
+            $table->dropColumn('community_member_id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('events', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger('community_member_id')->nullable()->after('community_id');
+            $table->foreign('community_member_id')->references('id')->on('community_members')->onDelete('set null');
+        });
+    }
+};

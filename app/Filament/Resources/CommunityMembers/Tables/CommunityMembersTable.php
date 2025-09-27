@@ -31,7 +31,7 @@ class CommunityMembersTable
                     ->imageHeight(40) // Optional: Adjust the height of the image
                     ->circular(), // Makes the image fully rounded,
                 TextColumn::make('user.name')
-                    ->numeric()
+                    ->label('Name')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('number_event')
@@ -55,9 +55,11 @@ class CommunityMembersTable
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('team_goal')
+                    ->label('T Goals')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('team_conceded')
+                    ->label('T Conceded')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('champions')

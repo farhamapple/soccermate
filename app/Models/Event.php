@@ -30,10 +30,10 @@ class Event extends Model
     }
 
     // Add relationship to CommunityMember And Community
-    public function communityMember()
-    {
-        return $this->belongsTo(CommunityMember::class);
-    }
+    // public function communityMember()
+    // {
+    //     return $this->belongsTo(CommunityMember::class);
+    // }
     public function community()
     {
         return $this->belongsTo(Community::class);
