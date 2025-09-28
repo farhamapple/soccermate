@@ -6,10 +6,13 @@ use App\Filament\Resources\EventTeams\Pages\CreateEventTeam;
 use App\Filament\Resources\EventTeams\Pages\EditEventTeam;
 use App\Filament\Resources\EventTeams\Pages\ListEventTeams;
 use App\Filament\Resources\EventTeams\Pages\ViewEventTeam;
+use App\Filament\Resources\EventTeams\RelationManagers\EventTeamMembersRelationManager;
 use App\Filament\Resources\EventTeams\Schemas\EventTeamForm;
 use App\Filament\Resources\EventTeams\Schemas\EventTeamInfolist;
 use App\Filament\Resources\EventTeams\Tables\EventTeamsTable;
+use App\Models\Event;
 use App\Models\EventTeam;
+use App\Models\EventTeamMember;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -49,7 +52,7 @@ class EventTeamResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            EventTeamMembersRelationManager::class,
         ];
     }
 

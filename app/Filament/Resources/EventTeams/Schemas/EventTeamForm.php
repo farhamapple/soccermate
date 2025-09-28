@@ -12,9 +12,7 @@ class EventTeamForm
     {
         return $schema
             ->components([
-                TextInput::make('event_id')
-                    ->required()
-                    ->numeric(),
+
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('win')
@@ -43,9 +41,6 @@ class EventTeamForm
                     ->default(0),
                 Toggle::make('champion')
                     ->required(),
-                Toggle::make('is_wl_team')
-                    ->required(),
-                TextInput::make('status'),
             ]);
     }
 }
